@@ -1,4 +1,4 @@
-FROM debian
+FROM gliderlabs/alpine:3.1
 MAINTAINER Māris Vilks <maris.vilks@bigdog.io>
 LABEL Description="Debian based image with collectd daemon, 'network' plugin and mysql client libraries for 'mysql' plugin."
 
@@ -10,15 +10,16 @@ ENV MYSQL_HOST="mysql" \
     NETWORK_SERVER="logstash" \
     NETWORK_PORT="25826"
 
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-        collectd-core \
-        libmysqlclient18 \
-        librrd4- perl- \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk-install \
+        bash \
+        sed \
+        collectd \
+        collectd-mysql \
+        collectd-network \
+        mysql-client
 COPY ./collectd.conf /config/
 COPY ./entrypoint.sh /
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["collectd", "-f", "-C", "/config/collectd.conf"]
 
