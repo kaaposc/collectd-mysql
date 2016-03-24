@@ -1,6 +1,6 @@
-FROM gliderlabs/alpine:3.1
+FROM gliderlabs/alpine
 MAINTAINER Māris Vilks <maris.vilks@bigdog.io>
-LABEL Description="gliderlabs/alpine:3.1 based image running collectd daemon with 'network' plugin and 'mysql' plugin."
+LABEL Description="gliderlabs/alpine based image running collectd daemon with 'network' plugin and 'mysql' plugin."
 
 RUN apk-install \
         bash \

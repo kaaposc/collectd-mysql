@@ -1,6 +1,6 @@
 # collectd-mysql
 
-`gliderlabs/alpine:3.1` based docker image running collectd daemon with `mysql`
+`gliderlabs/alpine` based docker image running collectd daemon with `mysql`
 and `network` plugins.
 
 Entrypoint script uses environment variables to create `collectd.conf` file. If
