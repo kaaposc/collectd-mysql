@@ -26,6 +26,7 @@ print_item ()
 			User "$3"
 			Password "$4"
 			Port "${5:-$DEF_MYSQL_PORT}"
+			InnodbStats true
 		</Database>
 EOF
 	echo "$item" >> $CONFIG_FILE
