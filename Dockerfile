@@ -8,5 +8,5 @@ RUN apk-install \
         collectd-network \
         mysql-client
 
-CMD ["collectd"]
+ENTRYPOINT ["collectd"]
 
